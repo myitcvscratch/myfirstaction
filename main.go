@@ -1,10 +1,12 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/sethvargo/go-githubactions"
 )
 
 func main() {
 	fruit := githubactions.GetInput("fruit")
-	githubactions.Debugf("You gave me the fruit: %v", fruit)
+	fmt.Printf("You gave me the fruit: %v", fruit)
 }

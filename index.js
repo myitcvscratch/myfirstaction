@@ -18490,7 +18490,7 @@ $packages["os"] = (function() {
 	return $pkg;
 })();
 $packages["fmt"] = (function() {
-	var $pkg = {}, $init, errors, fmtsort, io, math, os, reflect, strconv, sync, utf8, fmtFlags, fmt, State, Formatter, Stringer, GoStringer, buffer, pp, scanError, ss, ssave, sliceType, ptrType, ptrType$1, arrayType, arrayType$1, sliceType$1, sliceType$2, arrayType$2, ptrType$2, ptrType$5, ptrType$25, funcType, ppFree, space, ssFree, complexError, boolError, newPrinter, Fprintf, Sprintf, Fprint, getField, tooLarge, parsenum, intFromArg, parseArgNumber, isSpace, notSpace, indexRune;
+	var $pkg = {}, $init, errors, fmtsort, io, math, os, reflect, strconv, sync, utf8, fmtFlags, fmt, State, Formatter, Stringer, GoStringer, buffer, pp, scanError, ss, ssave, sliceType, ptrType, ptrType$1, arrayType, arrayType$1, sliceType$1, sliceType$2, arrayType$2, ptrType$2, ptrType$5, ptrType$25, funcType, ppFree, space, ssFree, complexError, boolError, newPrinter, Fprintf, Printf, Sprintf, Fprint, getField, tooLarge, parsenum, intFromArg, parseArgNumber, isSpace, notSpace, indexRune;
 	errors = $packages["errors"];
 	fmtsort = $packages["internal/fmtsort"];
 	io = $packages["io"];
@@ -19240,6 +19240,19 @@ $packages["fmt"] = (function() {
 		/* */ } return; } if ($f === undefined) { $f = { $blk: Fprintf }; } $f._r = _r; $f._r$1 = _r$1; $f._tuple = _tuple; $f.a = a; $f.err = err; $f.format = format; $f.n = n; $f.p = p; $f.w = w; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.Fprintf = Fprintf;
+	Printf = function(format, a) {
+		var _r, _tuple, a, err, format, n, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _tuple = $f._tuple; a = $f.a; err = $f.err; format = $f.format; n = $f.n; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		n = 0;
+		err = $ifaceNil;
+		_r = Fprintf(os.Stdout, format, a); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_tuple = _r;
+		n = _tuple[0];
+		err = _tuple[1];
+		$s = -1; return [n, err];
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Printf }; } $f._r = _r; $f._tuple = _tuple; $f.a = a; $f.err = err; $f.format = format; $f.n = n; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	$pkg.Printf = Printf;
 	Sprintf = function(format, a) {
 		var _r, a, format, p, s, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; a = $f.a; format = $f.format; p = $f.p; s = $f.s; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -21358,7 +21371,7 @@ $packages["strings"] = (function() {
 	return $pkg;
 })();
 $packages["github.com/sethvargo/go-githubactions"] = (function() {
-	var $pkg = {}, $init, fmt, io, os, sort, strings, Action, sliceType, sliceType$1, ptrType, mapType, defaultAction, New, GetInput, Debugf;
+	var $pkg = {}, $init, fmt, io, os, sort, strings, Action, sliceType, sliceType$1, ptrType, mapType, defaultAction, New, GetInput;
 	fmt = $packages["fmt"];
 	io = $packages["io"];
 	os = $packages["os"];
@@ -21581,14 +21594,6 @@ $packages["github.com/sethvargo/go-githubactions"] = (function() {
 		/* */ } return; } if ($f === undefined) { $f = { $blk: GetInput }; } $f._r = _r; $f.i = i; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.GetInput = GetInput;
-	Debugf = function(msg, args) {
-		var args, msg, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; args = $f.args; msg = $f.msg; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		$r = defaultAction.Debugf(msg, args); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: Debugf }; } $f.args = args; $f.msg = msg; $f.$s = $s; $f.$r = $r; return $f;
-	};
-	$pkg.Debugf = Debugf;
 	ptrType.methods = [{prop: "AddMask", name: "AddMask", pkg: "", typ: $funcType([$String], [], false)}, {prop: "AddMatcher", name: "AddMatcher", pkg: "", typ: $funcType([$String], [], false)}, {prop: "RemoveMatcher", name: "RemoveMatcher", pkg: "", typ: $funcType([$String], [], false)}, {prop: "AddPath", name: "AddPath", pkg: "", typ: $funcType([$String], [], false)}, {prop: "SaveState", name: "SaveState", pkg: "", typ: $funcType([$String, $String], [], false)}, {prop: "GetInput", name: "GetInput", pkg: "", typ: $funcType([$String], [$String], false)}, {prop: "Group", name: "Group", pkg: "", typ: $funcType([$String], [], false)}, {prop: "EndGroup", name: "EndGroup", pkg: "", typ: $funcType([], [], false)}, {prop: "SetEnv", name: "SetEnv", pkg: "", typ: $funcType([$String, $String], [], false)}, {prop: "SetOutput", name: "SetOutput", pkg: "", typ: $funcType([$String, $String], [], false)}, {prop: "Debugf", name: "Debugf", pkg: "", typ: $funcType([$String, sliceType], [], true)}, {prop: "Errorf", name: "Errorf", pkg: "", typ: $funcType([$String, sliceType], [], true)}, {prop: "Fatalf", name: "Fatalf", pkg: "", typ: $funcType([$String, sliceType], [], true)}, {prop: "Warningf", name: "Warningf", pkg: "", typ: $funcType([$String, sliceType], [], true)}, {prop: "WithFieldsSlice", name: "WithFieldsSlice", pkg: "", typ: $funcType([sliceType$1], [ptrType], false)}, {prop: "WithFieldsMap", name: "WithFieldsMap", pkg: "", typ: $funcType([mapType], [ptrType], false)}];
 	Action.init("github.com/sethvargo/go-githubactions", [{prop: "w", name: "w", embedded: false, exported: false, typ: io.Writer, tag: ""}, {prop: "fields", name: "fields", embedded: false, exported: false, typ: $String, tag: ""}]);
 	$init = function() {
@@ -21606,28 +21611,31 @@ $packages["github.com/sethvargo/go-githubactions"] = (function() {
 	return $pkg;
 })();
 $packages["github.com/myitcvscratch/myfirstaction"] = (function() {
-	var $pkg = {}, $init, githubactions, sliceType, main;
+	var $pkg = {}, $init, fmt, githubactions, sliceType, main;
+	fmt = $packages["fmt"];
 	githubactions = $packages["github.com/sethvargo/go-githubactions"];
 	sliceType = $sliceType($emptyInterface);
 	main = function() {
-		var _r, fruit, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; fruit = $f.fruit; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		var _r, _r$1, fruit, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; fruit = $f.fruit; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		_r = githubactions.GetInput("fruit"); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 		fruit = _r;
-		$r = githubactions.Debugf("You gave me the fruit: %v", new sliceType([new $String(fruit)])); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		_r$1 = fmt.Printf("You gave me the fruit: %v", new sliceType([new $String(fruit)])); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		_r$1;
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: main }; } $f._r = _r; $f.fruit = fruit; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: main }; } $f._r = _r; $f._r$1 = _r$1; $f.fruit = fruit; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		$r = githubactions.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		/* */ if ($pkg === $mainPkg) { $s = 2; continue; }
-		/* */ $s = 3; continue;
-		/* if ($pkg === $mainPkg) { */ case 2:
-			$r = main(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = fmt.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = githubactions.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		/* */ if ($pkg === $mainPkg) { $s = 3; continue; }
+		/* */ $s = 4; continue;
+		/* if ($pkg === $mainPkg) { */ case 3:
+			$r = main(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			$mainFinished = true;
-		/* } */ case 3:
+		/* } */ case 4:
 		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.$init = $init;
