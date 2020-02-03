@@ -574,6 +574,7 @@
 		go.argv = process.argv.slice(1);
 		go.env = Object.assign({ TMPDIR: require("os").tmpdir() }, process.env);
 		go.exit = process.exit;
+		const path = require('path');
 		WebAssembly.instantiate(fs.readFileSync(path.join(__dirname, "/main.wasm")), go.importObject).then((result) => {
 			process.on("exit", (code) => { // Node.js exits if no event handler is pending
 				if (code === 0 && !go.exited) {
