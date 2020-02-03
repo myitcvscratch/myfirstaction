@@ -2,6 +2,9 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+const path = require('path');
+process.argv = process.argv.slice(0, 2).concat(path.join(__dirname,"main.wasm"), process.argv.slice(2));
+
 (() => {
 	// Map multiple JavaScript environments to a single common API,
 	// preferring web standards over Node.js API.
@@ -565,17 +568,16 @@
 		global.process.versions &&
 		!global.process.versions.electron
 	) {
-		if (process.argv.length < 2) {
+		if (process.argv.length < 3) {
 			console.error("usage: go_js_wasm_exec [wasm binary] [arguments]");
 			process.exit(1);
 		}
 
 		const go = new Go();
-		go.argv = process.argv.slice(1);
+		go.argv = process.argv.slice(2);
 		go.env = Object.assign({ TMPDIR: require("os").tmpdir() }, process.env);
 		go.exit = process.exit;
-		const path = require('path');
-		WebAssembly.instantiate(fs.readFileSync(path.join(__dirname, "/main.wasm")), go.importObject).then((result) => {
+		WebAssembly.instantiate(fs.readFileSync(process.argv[2]), go.importObject).then((result) => {
 			process.on("exit", (code) => { // Node.js exits if no event handler is pending
 				if (code === 0 && !go.exited) {
 					// deadlock, make Go print error and stack traces
