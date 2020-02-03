@@ -8,5 +8,5 @@ import (
 
 func main() {
 	fruit := githubactions.GetInput("fruit")
-	fmt.Printf("You gave me the fruit: %v", fruit)
+	fmt.Printf("You gave me the fruit: %v; thank you!\n", fruit)
 }
