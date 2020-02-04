@@ -1,6 +1,13 @@
 "use strict";
 
 const spawn = require('child_process').spawn;
+var env = Object.create( process.env );
+env.GOPROXY = 'https://proxy.golang.org,direct';
+env.GOSUMDB = 'sum.golang.org';
+env.GOPRIVATE = '';
+env.GONOPROXY = '';
+env.GONOSUMDB = '';
+env.GOINSECURE = '';
 
 async function run() {
 	var args = Array.prototype.slice.call(arguments);
@@ -14,6 +21,7 @@ async function run() {
 }
 
 (async function() {
+	await run('env');
 	await run('go', 'env');
 	await run('go', 'mod', 'verify');
 	const path = require('path');
