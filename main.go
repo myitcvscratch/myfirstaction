@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	fmt.Printf("We are running on %v\n", platform())
+	fmt.Printf("We are running on %v; Hooray!\n", platform())
 }
