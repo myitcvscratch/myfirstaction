@@ -13,11 +13,9 @@ async function run() {
 	}
 }
 
-console.log(">> Time is: ", (new Date(Date.now())).toLocaleString());
-console.log("");
-
 (async function() {
-	await run('cat', '/etc/lsb-release')
+	await run('go', 'env');
+	await run('go', 'mod', 'verify');
 	const path = require('path');
-	await run('go', 'run', path.join(__dirname, 'main.go'))
+	await run('go', 'run', path.join(__dirname, 'main.go'));
 })()
