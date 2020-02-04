@@ -13,6 +13,9 @@ async function run() {
 	}
 }
 
+console.log(">> Time is: ", (new Date(Date.now())).toLocaleString());
+console.log("");
+
 (async function() {
 	await run('git', 'log', '-1');
 	// await run('go', 'version');
