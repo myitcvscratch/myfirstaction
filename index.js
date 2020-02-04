@@ -17,7 +17,6 @@ console.log(">> Time is: ", (new Date(Date.now())).toLocaleString());
 console.log("");
 
 (async function() {
-	await run('go', 'version');
-	// const path = require('path');
-	// await run('go', 'run', path.join(__dirname, 'main.go'))
+	const path = require('path');
+	await run('go', 'run', path.join(__dirname, 'main.go'))
 })()
