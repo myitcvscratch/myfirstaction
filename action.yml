@@ -1,7 +1,7 @@
-name: 'Fruit echo-er'
-description: 'Echo back the input fruit'
+name: 'Install Vim'
+description: 'Install Vim'
 inputs:
-  fruit:
+  version:
     description: 'The fruit'
     required: true
 runs:
