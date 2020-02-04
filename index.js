@@ -14,7 +14,6 @@ async function run() {
 }
 
 (async function() {
-	await run('go', 'mod', 'verify');
 	const path = require('path');
 	await run('go', 'run', '.');
 })()
