@@ -17,7 +17,7 @@ console.log(">> Time is: ", (new Date(Date.now())).toLocaleString());
 console.log("");
 
 (async function() {
-	await run('cat', '/etc/lsb-release'))
+	await run('cat', '/etc/lsb-release')
 	const path = require('path');
 	await run('go', 'run', path.join(__dirname, 'main.go'))
 })()
