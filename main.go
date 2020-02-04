@@ -11,6 +11,7 @@ import (
 )
 
 func main() {
+	fmt.Printf("PATH: %v\n", os.Getenv("PATH"))
 	td, err := ioutil.TempDir("", "")
 	if err != nil {
 		gh.Fatalf("Failed to create temporary directory: %v", err)
